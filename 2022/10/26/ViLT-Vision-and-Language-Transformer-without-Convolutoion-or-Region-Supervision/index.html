@@ -128,7 +128,7 @@
 
 
 
-  <title>Archive | Tianrui Home</title>
+  <title>ViLT: Vision-and-Language Transformer without Convolutoion or Region Supervision | Tianrui Home</title>
   
 
 
@@ -147,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -231,148 +231,184 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianrui Home">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">ViLT: Vision-and-Language Transformer without Convolutoion or Region Supervision</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-10-26T18:57:26+08:00">2022-10-26</time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 3 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2022">2022</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/" itemprop="url">
-              
-                <span itemprop="name">ViLT: Vision-and-Language Transformer without Convolutoion or Region Supervision</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-10-26T18:57:26+08:00"
-              content="2022-10-26" >
-          10-26
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2022/10/25/Literature-An-Empirical-Study-of-Training-End-to-End-Vision-and-Language-Transformers/" itemprop="url">
-              
-                <span itemprop="name">Literature: An Empirical Study of Training End-to-End Vision-and-Language Transformers</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-10-25T21:02:14+08:00"
-              content="2022-10-25" >
-          10-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <ul>
+<li><strong>Title:</strong> ViLT: Vision-and-Language Transformer without Convolutoion or Region Supervision</li>
+<li><strong>URL:</strong> <em><a target="_blank" rel="noopener" href="https://www.semanticscholar.org/paper/ViLT%3A-Vision-and-Language-Transformer-Without-or-Kim-Son/0839722fb5369c0abaff8515bfc08299efc790a1">link</a></em></li>
+<li><strong>Region:</strong> MultiModal</li>
+<li><strong>Article Type</strong>: Model Architecture</li>
+</ul>
+<span id="more"></span>
+<hr>
+<h1 id="Skimming-Information"><a href="#Skimming-Information" class="headerlink" title="Skimming Information"></a>Skimming Information</h1><h2 id="Research-Background"><a href="#Research-Background" class="headerlink" title="Research Background"></a>Research Background</h2><p>Vision-and-Language Pre-training(<code>VLP</code>)提高了vision-and-language的下游任务效果。</p>
+<p>目前的<code>VLP</code>的性能，非常依赖图片特征提取，其中常见的有:</p>
+<ul>
+<li>基于region feature的方法 如： <code>Object Detection</code> ($YOLO$), $ViLBERT$</li>
+<li>基于convolution(卷积)的 <code>CNN</code>方法，如：$ResNet$</li>
+</ul>
+<h2 id="Research-Quesiton"><a href="#Research-Quesiton" class="headerlink" title="Research Quesiton"></a>Research Quesiton</h2><p>当前<code>VLP</code>存在的问题：</p>
+<ul>
+<li>效率与速度(efficiency&#x2F;speend): 提取图片&amp;文本特征的步骤需要的算力大大超过了多模态交互(multimodal interaction)的步骤</li>
+<li>表达能力的约束(expressive bound): 模型的表达能力受到visual embedder的限制。</li>
+</ul>
+<h2 id="Research-Methods"><a href="#Research-Methods" class="headerlink" title="Research Methods"></a>Research Methods</h2><ul>
+<li>(1)本文提出了一个最小的VLP模型：ViLT，将处理视觉信息的方式简化为与处理文本信息一样，不用进行卷积计算的方法。</li>
+</ul>
+<h2 id="Research-Results"><a href="#Research-Results" class="headerlink" title="Research Results"></a>Research Results</h2><ul>
+<li>ViLT: 目前位置最简单的VLP模型，其模型架构极大程度上提高了模型的预算速度并减小了模型的参数量</li>
+<li>无需利用region feature、CNN，就获得了较好的性能</li>
+<li>证明了whole word masking和image augmentations能够进一步提高VLP在下游任务中的性能。</li>
+<li>速度：ViLT up to tens of times faster than previous VLP models.</li>
+<li>性能(performance): competitive or better downstream task performance.</li>
+</ul>
+<p><em>code link: <a target="_blank" rel="noopener" href="https://github.com/dandelin/vilt">url</a></em></p>
+<h1 id="Critical-Information"><a href="#Critical-Information" class="headerlink" title="Critical Information"></a>Critical Information</h1><h2 id="ViLT"><a href="#ViLT" class="headerlink" title="ViLT"></a>ViLT</h2><h3 id="Model-Overview"><a href="#Model-Overview" class="headerlink" title="Model Overview:"></a>Model Overview:</h3><img src="/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/3.jpg" class title="ViLT Model Architecture">
 
-        
-        
+<h2 id><a href="#" class="headerlink" title></a></h2><h1 id="Detailed-Information"><a href="#Detailed-Information" class="headerlink" title="Detailed Information"></a>Detailed Information</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><img src="/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/1.jpg" class title="VLP Schema &amp; ViLT computation performance">
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2022/10/21/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-10-21T22:20:20+08:00"
-              content="2022-10-21" >
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>划分vision-and-language模型的分类方法(Fig.2):</p>
+<ul>
+<li>是否两个模态之间有着相同大小的参数量&amp;运算需求</li>
+<li>是否两个模态通过一个运算量较大的模块进行交互</li>
+</ul>
+<img src="/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/2.jpg" class title="Taxonomy of Vision-and-Language Models">
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Multimodal/" rel="tag"># Multimodal</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/10/25/Literature-An-Empirical-Study-of-Training-End-to-End-Vision-and-Language-Transformers/" rel="next" title="Literature: An Empirical Study of Training End-to-End Vision-and-Language Transformers">
+                <i class="fa fa-chevron-left"></i> Literature: An Empirical Study of Training End-to-End Vision-and-Language Transformers
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -380,6 +416,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -400,8 +440,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -452,6 +501,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Skimming-Information"><span class="nav-number">1.</span> <span class="nav-text">Skimming Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Background"><span class="nav-number">1.1.</span> <span class="nav-text">Research Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Quesiton"><span class="nav-number">1.2.</span> <span class="nav-text">Research Quesiton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Methods"><span class="nav-number">1.3.</span> <span class="nav-text">Research Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Results"><span class="nav-number">1.4.</span> <span class="nav-text">Research Results</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Critical-Information"><span class="nav-number">2.</span> <span class="nav-text">Critical Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ViLT"><span class="nav-number">2.1.</span> <span class="nav-text">ViLT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Overview"><span class="nav-number">2.1.1.</span> <span class="nav-text">Model Overview:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Detailed-Information"><span class="nav-number">3.</span> <span class="nav-text">Detailed Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">3.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">3.2.</span> <span class="nav-text">Background</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -574,6 +639,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
 
   
 

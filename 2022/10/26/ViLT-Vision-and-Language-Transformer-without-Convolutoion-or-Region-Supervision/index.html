@@ -86,7 +86,7 @@
 <meta property="og:image" content="http://example.com/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/1.jpg">
 <meta property="og:image" content="http://example.com/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/2.jpg">
 <meta property="article:published_time" content="2022-10-26T10:57:26.000Z">
-<meta property="article:modified_time" content="2022-10-26T13:16:53.727Z">
+<meta property="article:modified_time" content="2022-10-27T11:30:39.612Z">
 <meta property="article:author" content="TianruiSong">
 <meta property="article:tag" content="Multimodal">
 <meta name="twitter:card" content="summary">
@@ -316,9 +316,7 @@
 <li><strong>Region:</strong> MultiModal</li>
 <li><strong>Article Type</strong>: Model Architecture</li>
 </ul>
-<span id="more"></span>
-<hr>
-<h1 id="Skimming-Information"><a href="#Skimming-Information" class="headerlink" title="Skimming Information"></a>Skimming Information</h1><h2 id="Research-Background"><a href="#Research-Background" class="headerlink" title="Research Background"></a>Research Background</h2><p>Vision-and-Language Pre-training(<code>VLP</code>)提高了vision-and-language的下游任务效果。</p>
+<h2 id><a href="#" class="headerlink" title></a><span id="more"></span></h2><h1 id="Skimming-Information"><a href="#Skimming-Information" class="headerlink" title="Skimming Information"></a>Skimming Information</h1><h2 id="Research-Background"><a href="#Research-Background" class="headerlink" title="Research Background"></a>Research Background</h2><p>Vision-and-Language Pre-training(<code>VLP</code>)提高了vision-and-language的下游任务效果。</p>
 <p>目前的<code>VLP</code>的性能，非常依赖图片特征提取，其中常见的有:</p>
 <ul>
 <li>基于region feature的方法 如： <code>Object Detection</code> ($YOLO$), $ViLBERT$</li>
@@ -326,7 +324,7 @@
 </ul>
 <h2 id="Research-Quesiton"><a href="#Research-Quesiton" class="headerlink" title="Research Quesiton"></a>Research Quesiton</h2><p>当前<code>VLP</code>存在的问题：</p>
 <ul>
-<li>效率与速度(efficiency&#x2F;speend): 提取图片&amp;文本特征的步骤需要的算力大大超过了多模态交互(multimodal interaction)的步骤</li>
+<li>效率与速度(efficiency/speend): 提取图片&amp;文本特征的步骤需要的算力大大超过了多模态交互(multimodal interaction)的步骤</li>
 <li>表达能力的约束(expressive bound): 模型的表达能力受到visual embedder的限制。</li>
 </ul>
 <h2 id="Research-Methods"><a href="#Research-Methods" class="headerlink" title="Research Methods"></a>Research Methods</h2><ul>
@@ -341,40 +339,59 @@
 </ul>
 <p><em>code link: <a target="_blank" rel="noopener" href="https://github.com/dandelin/vilt">url</a></em></p>
 <h1 id="Critical-Information"><a href="#Critical-Information" class="headerlink" title="Critical Information"></a>Critical Information</h1><h2 id="ViLT"><a href="#ViLT" class="headerlink" title="ViLT"></a>ViLT</h2><h3 id="Model-Overview"><a href="#Model-Overview" class="headerlink" title="Model Overview:"></a>Model Overview:</h3><img src="/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/3.jpg" class title="ViLT Model Architecture">
-
 <ul>
-<li><p>Text Embedder:<br>  $$\overline{t}&#x3D;[t_{class}; t_{1}T; …; t_{L}T] + T^{pos}\tag{1}$$</p>
-<ul>
+<li><strong>Text Embedder:</strong><script type="math/tex; mode=display">\overline{t}=[t_{class}; t_{1}T; ...; t_{L}T] + T^{pos}\tag{1}</script><ul>
 <li>即：文本<code>t</code>($t\in \mathbb{R}^{L\times |V|}$)，通过<code>embedding matrix</code>($T\in \mathbb{R}^{|V|\times H}$)和<code>position embedding</code>($T^{pos}\in \mathbb{R}^{L+1}\times H$)，生成文本嵌入<code>text embedding</code>($\overline{t}\in \mathbb{R}^{L\times H}$)</li>
 <li>其中，$L$表示句子长度，$|V| $表示词典大小, $H$表示词向量维数, $t_{class}$为输入序列开始的特殊token</li>
 </ul>
 </li>
-<li><p>Visual Emebedder:<br>  $$\overline{v}&#x3D;[v_{class};v_1V; …; v_{N}V]+V^{pos}\tag{2}$$</p>
-<ul>
-<li>输入图片<code>I</code>($I \in \mathbb{R}^{C\times H\times W}$)被切分为<code>patch</code>, 再<code>flatten</code>为$v\in\mathbb{R}^{N\times(P^2\cdot C)}$,$(P,P)$为一个patch的像素, $N &#x3D; HW&#x2F;P^2$。接着通过线性映射层<code>linear projection</code> $V\in\mathbb{R}^{P^2\cdot C}\times H$和<code>position embedding</code>，得到<code>image embedding</code>$\overline{v}\in\mathbb{R}^{N\times H}$</li>
+<li><p><strong>Visual Emebedder:</strong></p>
+<script type="math/tex; mode=display">\overline{v}=[v_{class};v_1V; ...; v_{N}V]+V^{pos}\tag{2}</script><ul>
+<li>输入图片<code>I</code>($I \in \mathbb{R}^{C\times H\times W}$)被切分为<code>patch</code>, 再<code>flatten</code>为$v\in\mathbb{R}^{N\times(P^2\cdot C)}$,$(P,P)$为一个patch的像素, $N = HW/P^2$。接着通过线性映射层<code>linear projection</code> $V\in\mathbb{R}^{P^2\cdot C}\times H$和<code>position embedding</code>，得到<code>image embedding</code>$\overline{v}\in\mathbb{R}^{N\times H}$</li>
 <li>其中，$C$为channel,$H$为图片高度,$W$为图片宽度,$N$为一张图片被划分为的图块数量, $v_{class}$为输入图块序列开始的特殊性token。</li>
 </ul>
 </li>
-<li><p>Modal Interaction</p>
+<li><p><strong>Modal Interaction</strong></p>
 <ul>
-<li>用<code>ViT</code>的权重，初始化interaction transformer模块<br>  $$z^{0}&#x3D;[\overline{t}+t^{type}, \overline{v}+v^{type}]\tag{3}$$</li>
-<li>将text embedder输出的表征加上文本类型表征$t^{type}$, 将visual embedder输出的表征加上图片类型表征$v^{type}$，再将两个不同模态的表针拼接作为modal interaction模块的输入<br>  $$\hat{z}^{d}&#x3D;MSA(LN(z^{d-1}))+z^{d-1}, d&#x3D;1…D\tag{4}$$<br>  $$z^{d}&#x3D;MLP(LN(\hat{z}^{d}))+\hat{z}^{d}, d&#x3D;1…D\tag{5}$$</li>
+<li>用<code>ViT</code>的权重，初始化interaction transformer模块<script type="math/tex; mode=display">z^{0}=[\overline{t}+t^{type}, \overline{v}+v^{type}]\tag{3}</script></li>
+<li>将text embedder输出的表征加上文本类型表征$t^{type}$, 将visual embedder输出的表征加上图片类型表征$v^{type}$，再将两个不同模态的表针拼接作为modal interaction模块的输入<script type="math/tex; mode=display">\hat{z}^{d}=MSA(LN(z^{d-1}))+z^{d-1}, d=1...D\tag{4}</script><script type="math/tex; mode=display">z^{d}=MLP(LN(\hat{z}^{d}))+\hat{z}^{d}, d=1...D\tag{5}</script></li>
 <li>对于Transformer中的第<code>d</code>层，将<code>d-1</code>层的输出$z^{d-1}$作为输入，<em>先通过Layer Normalization</em>($LN)，再通过<code>Mulit-head Self-Attention</code>($MSA$)，最后残差链接，加上开始的输入，得到第<code>d</code>层的中间状态$\hat{z}^{d}$</li>
 <li>再将$\hat{z}^{d}$通过<code>Layer Normalization</code>和多层感知机$MLP$, 以及利用残差连接，得到第<code>d</code>层Transformer的输出$z^{d}$</li>
-<li>经过$D$层的Transformer后，得到输出$d^{D}$<br>  $$p&#x3D;tanh(z_{0}^{D}W_{pool})\tag{6}$$</li>
+<li>经过$D$层的Transformer后，得到输出$d^{D}$<script type="math/tex; mode=display">p=tanh(z_{0}^{D}W_{pool})\tag{6}</script></li>
 </ul>
 </li>
 </ul>
-<h3 id="Pre-training-Objectives"><a href="#Pre-training-Objectives" class="headerlink" title="Pre-training Objectives"></a>Pre-training Objectives</h3><p>模型的预训练目标: Masked Language Modeling &amp; Image text Matching</p>
-<ul>
-<li>图片文本对齐(Image Text Matching):<br>  + </li>
-<li>文本随机遮罩模型(Masked Language Modeling):<ul>
-<li></li>
+<h3 id="Pre-training-Objectives"><a href="#Pre-training-Objectives" class="headerlink" title="Pre-training Objectives"></a>Pre-training Objectives</h3><ul>
+<li><strong>图片文本对齐(Image Text Matching):</strong><ul>
+<li>以0.5的概率,随机替换对齐的文本图片对中的图片。</li>
+<li>用一个线性层ITM作为分类头, 将模型输出的logits映射到二分类</li>
+<li>以negative log-likelihood loss作为损失函数</li>
 </ul>
 </li>
+<li><strong>文本词语与图块对齐(word patch alignment):</strong><ul>
+<li>计算文本子集与图片子集的对齐分数($z^{D}<em>{t}, z^{D}</em>{v}$)</li>
+<li>用<code>inexact proximal point method for optimal transports</code>(<em>IPOT, Xie et al., 2020</em>)</li>
+<li>IPOT的超参数设置为: $\beta = 0.5, N=50$</li>
+<li>增加了”<em>the approximate wasserstein distance</em>“,并以0.1的权重与ITM loss相加</li>
+</ul>
+</li>
+<li><strong>文本随机遮罩模型(Masked Language Modeling):</strong><ul>
+<li>预测被遮罩的text token($t<em>{masked}$)的真实标签,基于其contextual vector $z</em>{masked}^{D}|_{t}$</li>
+<li>以0.15的比例随机遮罩文本中的token</li>
+<li>用一个两层的MLP作为MLM任务的分类器 —— 与BERT中的相同。</li>
+<li>计算”<em>negative log-likelihood</em>“作为loss函数</li>
+</ul>
+</li>
+</ul>
+<h2 id="Whole-Word-Masking"><a href="#Whole-Word-Masking" class="headerlink" title="Whole Word Masking"></a>Whole Word Masking</h2><ul>
+<li>概念: masks all consecutive subword tokens that compose a whole word</li>
+<li>将同一个词的subword都进行Mask,然后进行预训练</li>
+</ul>
+<h2 id="Image-Augmentation"><a href="#Image-Augmentation" class="headerlink" title="Image Augmentation"></a>Image Augmentation</h2><ul>
+<li>Background: 图像增强在Visual Model中取得了较好的效果, 但在VLP预训练中未被使用</li>
+<li>本文使用RandAugment(Cubuk et al., 2020)中除了color inversion和cutout以外的图像增强方法</li>
 </ul>
 <h1 id="Detailed-Information"><a href="#Detailed-Information" class="headerlink" title="Detailed Information"></a>Detailed Information</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><img src="/2022/10/26/ViLT-Vision-and-Language-Transformer-without-Convolutoion-or-Region-Supervision/1.jpg" class title="VLP Schema &amp; ViLT computation performance">
-
 <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>划分vision-and-language模型的分类方法(Fig.2):</p>
 <ul>
 <li>是否两个模态之间有着相同大小的参数量&amp;运算需求</li>
@@ -546,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Skimming-Information"><span class="nav-number">1.</span> <span class="nav-text">Skimming Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Background"><span class="nav-number">1.1.</span> <span class="nav-text">Research Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Quesiton"><span class="nav-number">1.2.</span> <span class="nav-text">Research Quesiton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Methods"><span class="nav-number">1.3.</span> <span class="nav-text">Research Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Results"><span class="nav-number">1.4.</span> <span class="nav-text">Research Results</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Critical-Information"><span class="nav-number">2.</span> <span class="nav-text">Critical Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ViLT"><span class="nav-number">2.1.</span> <span class="nav-text">ViLT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Overview"><span class="nav-number">2.1.1.</span> <span class="nav-text">Model Overview:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-training-Objectives"><span class="nav-number">2.1.2.</span> <span class="nav-text">Pre-training Objectives</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Detailed-Information"><span class="nav-number">3.</span> <span class="nav-text">Detailed Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">3.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">3.2.</span> <span class="nav-text">Background</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Skimming-Information"><span class="nav-number"></span> <span class="nav-text">Skimming Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Background"><span class="nav-number">1.</span> <span class="nav-text">Research Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Quesiton"><span class="nav-number">2.</span> <span class="nav-text">Research Quesiton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Methods"><span class="nav-number">3.</span> <span class="nav-text">Research Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Results"><span class="nav-number">4.</span> <span class="nav-text">Research Results</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Critical-Information"><span class="nav-number"></span> <span class="nav-text">Critical Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ViLT"><span class="nav-number">1.</span> <span class="nav-text">ViLT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Model Overview:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-training-Objectives"><span class="nav-number">1.2.</span> <span class="nav-text">Pre-training Objectives</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Whole-Word-Masking"><span class="nav-number">2.</span> <span class="nav-text">Whole Word Masking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-Augmentation"><span class="nav-number">3.</span> <span class="nav-text">Image Augmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Detailed-Information"><span class="nav-number"></span> <span class="nav-text">Detailed Information</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">2.</span> <span class="nav-text">Background</span></a></li></ol></div>
             
 
           </div>
